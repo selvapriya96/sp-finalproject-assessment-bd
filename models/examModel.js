@@ -8,7 +8,7 @@ const examSchema = new mongoose.Schema({
   subject: { type: String, required: true },
   description: { type: String },
   date: { type: Date, required: true },
-  duration: { type: Number, required: true }, // minutes
+  duration: { type: Number, required: true }, 
 });
 
 export default mongoose.model("Exam", examSchema);

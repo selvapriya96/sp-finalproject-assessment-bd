@@ -9,23 +9,30 @@ import questionRoutes from "./routes/questionRoutes.js";
 
 dotenv.config();
 
-// ✅ Connect MongoDB once
+
 connectDB();
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
-// ✅ Routes
-app.use(cors({ origin: "http://localhost:5173" }));
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://sp-finalproject-assessment.netlify.app",
+  ],
+  credentials: true,
+}));
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/exams", examRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/results", resultRoutes);
-// ✅ Root check route
+
+
 app.get("/", (req, res) => res.send("API is running..."));
 
-// ✅ Server start
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

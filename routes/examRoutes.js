@@ -3,7 +3,7 @@ import Exam from "../models/examModel.js";
 
 const router = express.Router();
 
-// ✅ Create exam
+
 router.post("/", async (req, res) => {
   try {
     const exam = new Exam(req.body);
@@ -14,7 +14,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ Get all exams
 router.get("/", async (req, res) => {
   try {
     const exams = await Exam.find();
@@ -24,7 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ Update exam
+
 router.put("/:id", async (req, res) => {
   try {
     const updated = await Exam.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -34,7 +33,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// ✅ Delete exam
+
 router.delete("/:id", async (req, res) => {
   try {
     await Exam.findByIdAndDelete(req.params.id);

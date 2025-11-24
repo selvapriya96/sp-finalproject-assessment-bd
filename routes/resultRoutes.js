@@ -3,7 +3,7 @@ import Result from "../models/resultModel.js";
 
 const router = express.Router();
 
-// ➕ Save Exam Result
+
 router.post("/", async (req, res) => {
   try {
     const { user, examId, score, total, percentage } = req.body;
@@ -15,7 +15,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 📋 Get Results by User
 router.get("/:user", async (req, res) => {
   try {
     const results = await Result.find({ user: req.params.user }).populate("examId");

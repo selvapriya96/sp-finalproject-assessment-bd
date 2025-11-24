@@ -4,7 +4,6 @@ import Question from "../models/questionModel.js";
 
 const router = express.Router();
 
-// ➕ Add a new question
 router.post("/", async (req, res) => {
   try {
     const question = new Question(req.body);
@@ -15,8 +14,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 📋 Get all questions for an exam
-// 📋 Get all questions for an exam
+
+
 router.get("/:examId", async (req, res) => {
   try {
     const questions = await Question.find({ examId: req.params.examId });
@@ -30,7 +29,7 @@ router.get("/:examId", async (req, res) => {
 });
 
 
-// ❌ Delete a question
+
 router.delete("/:id", async (req, res) => {
   try {
     await Question.findByIdAndDelete(req.params.id);
