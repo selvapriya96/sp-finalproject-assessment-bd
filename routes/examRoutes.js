@@ -43,4 +43,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+
+
+
+router.get("/:id", async (req, res) => {
+  try {
+    const exam = await Exam.findById(req.params.id);
+    if (!exam) return res.status(404).json({ message: "Exam not found" });
+    res.json(exam);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 export default router;
