@@ -11,4 +11,4 @@ const examSchema = new mongoose.Schema({
   duration: { type: Number, required: true }, 
 });
 
-export default mongoose.model("Exam", examSchema);
+export default mongoose.models.Exam || mongoose.model("Exam", examSchema);

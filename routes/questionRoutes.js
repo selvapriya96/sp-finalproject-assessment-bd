@@ -18,7 +18,8 @@ router.post("/", async (req, res) => {
 
 router.get("/:examId", async (req, res) => {
   try {
-    const questions = await Question.find({ examId: req.params.examId });
+   const examId = mongoose.Types.ObjectId(req.params.examId);
+    const questions = await Question.find({ examId });
     if (!questions || questions.length === 0) {
       return res.status(404).json({ message: "No questions found for this exam" });
     }
@@ -27,6 +28,7 @@ router.get("/:examId", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 
 
 

@@ -1,24 +1,10 @@
 import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
-  examId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Exam",
-    required: true,
-  },
-  questionText: {
-    type: String,
-    required: true,
-  },
-  options: {
-    type: [String],
-    required: true,
-  },
-  correctAnswer: {
-    type: String,
-    required: true,
-  },
+  examId: { type: mongoose.Schema.Types.ObjectId, ref: "Exam", required: true },
+  questionText: { type: String, required: true },
+  options: [{ type: String }],
+  correctAnswer: { type: String, required: true },
 });
 
-const Question = mongoose.model("Question", questionSchema);
-export default Question;
+export default mongoose.models.Question || mongoose.model("Question", questionSchema);
